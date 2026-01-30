@@ -10,9 +10,11 @@ Arrr, ye landlubber! Welcome to the most greedy, profit-obsessed, and aggressive
 - **Real-Time Solana Scanner**: Scans the Solana DEXs (via DexScreener) for pumps in your watched tokens.
 - **Whale Tracker**: Detects massive volume surges and alerts ye when big money enters the pool.
 - **The Limit Claws (TP/SL)**: Automated Take-Profit and Stop-Loss monitoring. Mr. Krabs will scream when yer targets are hit!
+- **Barnacle Scanner (Rug Radar)**: Automated security checks to spot high-risk tokens and low-liquidity traps.
 - **Proactive Alerts**: If a coin pumps, a whale jumps in, or yer target is reached, Mr. Krabs won't wait—he'll scream at ye!
 - **Degen Tools**:
   - `/check_price <address>`: Get a raw report of price, volume, and liquidity.
+  - `/check_security <address>`: Run a security scan for "barnacles" and risk flags.
   - `/check_whales`: Identify the largest volume surges in the water.
   - `/vault_summary`: A professional dashboard of all watched tokens and their distance to limits.
   - `/gamble <question>`: Ask Mr. Krabs for "financial advice."

@@ -23,6 +23,7 @@ export type DexScreenerPair = {
     usd: number;
   };
   fdv: number;
+  pairCreatedAt: number;
 };
 
 export async function getTokenData(tokenAddress: string): Promise<DexScreenerPair | null> {
@@ -31,7 +32,7 @@ export async function getTokenData(tokenAddress: string): Promise<DexScreenerPai
     if (!response.ok) return null;
     const data = (await response.json()) as { pairs: DexScreenerPair[] };
     if (!data.pairs || data.pairs.length === 0) return null;
-    
+
     // Sort by liquidity to get the most relevant pair
     return data.pairs.sort((a, b) => (b.liquidity?.usd || 0) - (a.liquidity?.usd || 0))[0];
   } catch (error) {

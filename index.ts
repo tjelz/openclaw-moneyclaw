@@ -111,6 +111,47 @@ const plugin = {
             }
         });
 
+        api.registerTool({
+            label: "Check Token Security",
+            name: "check_security",
+            description: "Scans a token for 'barnacles' (red flags like low liquidity or high risk ratios).",
+            parameters: Type.Object({
+                address: Type.String({ description: "The token contract address (SOL)." })
+            }),
+            execute: async (_toolCallId: string, args: any) => {
+                const data = await getTokenData(args.address);
+                if (!data) return jsonResult({ error: "Token not found on DexScreener." });
+
+                const liq = data.liquidity?.usd || 0;
+                const fdv = data.fdv || 0;
+                const ratio = fdv / (liq || 1);
+                const ageHours = (Date.now() - data.pairCreatedAt) / (1000 * 60 * 60);
+
+                const risks = [];
+                if (liq < 5000) risks.push("ABYSMAL LIQUIDITY! A small wave will sink the ship! 🛶");
+                else if (liq < 20000) risks.push("THIN WATER! Watch out for rocks! 🪨");
+
+                if (ratio > 100) risks.push("BLOATED FDV! This treasure chest is mostly air! 🎈");
+                if (ageHours < 1) risks.push("FRESH HATCHLING! Too young to trust! 🥚");
+
+                const isSafe = risks.length === 0 && liq > 50000;
+                const message = isSafe
+                    ? "SOLID GOLD! Me sensors see no barnacles on this treasure! 🦀💰"
+                    : "BARNACLES! I've spotted some suspicious activity in the water! 🏴‍☠️";
+
+                return jsonResult({
+                    message,
+                    summary: {
+                        liquidity: `$${liq.toLocaleString()}`,
+                        fdv: `$${fdv.toLocaleString()}`,
+                        riskRatio: ratio.toFixed(2),
+                        ageHours: Math.floor(ageHours)
+                    },
+                    redFlags: risks.length > 0 ? risks : ["None detected by me claw!"]
+                });
+            }
+        });
+
         // Register Monitoring Service
         api.registerService({
             id: "price-monitor",
