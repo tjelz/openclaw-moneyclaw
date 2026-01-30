@@ -1,7 +1,7 @@
 import type { OpenClawPluginApi } from "openclaw/plugin-sdk";
 import { getTokenData } from "./src/dexscreener.js";
 import { PriceMonitor } from "./src/monitor.js";
-import { jsonResult } from "../../src/agents/tools/common.js";
+import { jsonResult } from "./src/helpers.js";
 import { Type } from "@sinclair/typebox";
 
 const plugin = {
