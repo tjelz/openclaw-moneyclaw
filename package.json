@@ -1,26 +1,25 @@
 {
-  "name": "@openclaw/mr-krabs-crypto",
-  "version": "1.0.0",
+  "name": "mr-krabs-crypto",
+  "version": "1.1.0",
   "type": "module",
-  "description": "Mr. Krabs Money Claw Crypto Hoarding Alert System for OpenClaw",
-  "author": "Thomas Febry",
-  "license": "MIT",
+  "description": "Mr. Krabs crypto monitor and greedy persona.",
+  "openclaw": {
+    "extensionType": "plugin",
+    "id": "mr-krabs-crypto",
+    "name": "Mr. Krabs Crypto",
+    "description": "Scans Solana coins and acts like a greedy crab.",
+    "entry": "index.ts"
+  },
+  "author": "tjelz",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjelz/openclaw-moneyclaw.git"
+    "url": "https://github.com/tjelz/openclaw-moneyclaw.git"
   },
-  "openclaw": {
-    "extensions": [
-      "./index.ts"
-    ]
-  },
-  "dependencies": {
-    "undici": "^6.19.2"
-  },
+  "license": "MIT",
   "devDependencies": {
-    "@mariozechner/pi-agent-core": "0.49.3",
-    "@sinclair/typebox": "0.34.47",
-    "@types/node": "^22.12.0",
+    "@mariozechner/pi-agent-core": "^0.0.1",
+    "@sinclair/typebox": "^0.34.14",
+    "@types/node": "^22.10.10",
     "typescript": "^5.7.3"
   }
 }
