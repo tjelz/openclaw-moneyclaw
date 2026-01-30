@@ -57,6 +57,32 @@ const plugin = {
             }
         });
 
+        api.registerTool({
+            label: "Check Whale Activity",
+            name: "check_whales",
+            description: "Finds coins with high activity or significant volume surges.",
+            parameters: Type.Object({
+                limit: Type.Optional(Type.Number({ description: "Limit of whales to report." }))
+            }),
+            execute: async (_toolCallId: string, args: any) => {
+                const watched = (api.pluginConfig?.watchedTokens as any[]) || [];
+                const reports = [];
+                for (const t of watched) {
+                    const data = await getTokenData(t.address);
+                    if (data) reports.push({
+                        symbol: data.baseToken.symbol,
+                        volume1h: data.volume.h1,
+                        volLiqRatio: data.volume.h1 / (data.liquidity?.usd || 1)
+                    });
+                }
+                const sorted = reports.sort((a, b) => b.volume1h - a.volume1h);
+                return jsonResult({
+                    message: "ARRR! I've spotted some massive beasts in the water! 🐋💰",
+                    whales: sorted.slice(0, args.limit || 5)
+                });
+            }
+        });
+
         // Register Monitoring Service
         api.registerService({
             id: "price-monitor",
