@@ -1,6 +1,4 @@
 declare module "openclaw/plugin-sdk" {
-    import { TypeBoxStatic } from "@sinclair/typebox";
-
     export interface OpenClawPluginApi {
         pluginConfig: any;
         logger: {

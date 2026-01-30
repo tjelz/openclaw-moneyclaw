@@ -1,6 +1,4 @@
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
-
-export function jsonResult(payload: unknown): AgentToolResult<unknown> {
+export function jsonResult(payload: any): any {
     return {
         content: [
             {
