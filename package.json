@@ -1,0 +1,20 @@
+{
+  "name": "@openclaw/mr-krabs-crypto",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Mr. Krabs Money Claw Crypto Hoarding Alert System for OpenClaw",
+  "author": "Thomas Febry",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjelz/openclaw-moneyclaw.git"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "dependencies": {
+    "undici": "^6.19.2"
+  }
+}
