@@ -83,6 +83,34 @@ const plugin = {
             }
         });
 
+        api.registerTool({
+            label: "Vault Summary",
+            name: "vault_summary",
+            description: "Shows a professional summary of all watched tokens and their distance to targets.",
+            parameters: Type.Object({}),
+            execute: async (_toolCallId: string, _args: any) => {
+                const watched = (api.pluginConfig?.watchedTokens as any[]) || [];
+                const summary = [];
+                for (const t of watched) {
+                    const data = await getTokenData(t.address);
+                    if (data) {
+                        const current = parseFloat(data.priceUsd);
+                        summary.push({
+                            symbol: t.symbol,
+                            price: `$${current}`,
+                            target: t.targetPrice ? `$${t.targetPrice}` : "NONE",
+                            stopLoss: t.stopLoss ? `$${t.stopLoss}` : "NONE",
+                            status: t.targetPrice && current >= t.targetPrice ? "TARGET MET!" : (t.stopLoss && current <= t.stopLoss ? "SINKING!" : "FLOATING")
+                        });
+                    }
+                }
+                return jsonResult({
+                    message: "ARRR! Here's the state of the vault! 🦀📦",
+                    tokens: summary
+                });
+            }
+        });
+
         // Register Monitoring Service
         api.registerService({
             id: "price-monitor",

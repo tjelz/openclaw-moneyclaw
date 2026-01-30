@@ -19,7 +19,15 @@
                         },
                         "threshold": {
                             "type": "number",
-                            "default": 5
+                            "description": "The pump percentage to trigger an alert (e.g., 5)."
+                        },
+                        "targetPrice": {
+                            "type": "number",
+                            "description": "Take-profit price target."
+                        },
+                        "stopLoss": {
+                            "type": "number",
+                            "description": "Stop-loss price target."
                         }
                     },
                     "required": [

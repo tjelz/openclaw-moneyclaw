@@ -9,10 +9,12 @@ Arrr, ye landlubber! Welcome to the most greedy, profit-obsessed, and aggressive
 - **Greedy Persona**: Injects the voice of Mr. Krabs into your AI sessions. He’s loud, he’s piratey, and he loves **ME MONEY!**
 - **Real-Time Solana Scanner**: Scans the Solana DEXs (via DexScreener) for pumps in your watched tokens.
 - **Whale Tracker**: Detects massive volume surges and alerts ye when big money enters the pool.
-- **Proactive Alerts**: If a coin pumps or a whale jumps in, Mr. Krabs won't wait—he'll scream at ye!
+- **The Limit Claws (TP/SL)**: Automated Take-Profit and Stop-Loss monitoring. Mr. Krabs will scream when yer targets are hit!
+- **Proactive Alerts**: If a coin pumps, a whale jumps in, or yer target is reached, Mr. Krabs won't wait—he'll scream at ye!
 - **Degen Tools**:
   - `/check_price <address>`: Get a raw report of price, volume, and liquidity.
   - `/check_whales`: Identify the largest volume surges in the water.
+  - `/vault_summary`: A professional dashboard of all watched tokens and their distance to limits.
   - `/gamble <question>`: Ask Mr. Krabs for "financial advice."
 - **Roast Mode**: He'll mock ye for being "paper hands" if ye sell early or miss a moonshot.
 
