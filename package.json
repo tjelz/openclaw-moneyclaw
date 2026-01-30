@@ -17,7 +17,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@mariozechner/pi-agent-core": "^0.0.1",
     "@sinclair/typebox": "^0.34.14",
     "@types/node": "^22.10.10",
     "typescript": "^5.7.3"
